@@ -31,6 +31,7 @@ fun SettingsScreen(
     onBack: () -> Unit,
     onOpenBlacklist: () -> Unit,
     onOpenLogin: () -> Unit,
+    onOpenAbout: () -> Unit,
     vm: SettingsViewModel = viewModel()
 ) {
     val context = LocalContext.current
@@ -116,6 +117,12 @@ fun SettingsScreen(
                     AppLog.clear()
                     Toast.makeText(context, "日志已清空", Toast.LENGTH_SHORT).show()
                 }
+            }
+
+            item { HorizontalDivider() }
+            item { ProfileSectionTitle("其他") }
+            item {
+                LogRow(title = "关于", subtitle = "版本信息 / 仓库链接") { onOpenAbout() }
             }
         }
     }

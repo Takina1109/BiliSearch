@@ -23,6 +23,7 @@ import com.takina.bilisearch.ui.screens.player.BangumiWebPlayer
 import com.takina.bilisearch.ui.screens.player.PlayerScreen
 import com.takina.bilisearch.ui.screens.profile.EditProfileScreen
 import com.takina.bilisearch.ui.screens.search.SearchScreen
+import com.takina.bilisearch.ui.screens.settings.AboutScreen
 import com.takina.bilisearch.ui.screens.settings.BlacklistScreen
 import com.takina.bilisearch.ui.screens.settings.SettingsScreen
 import com.takina.bilisearch.ui.screens.user.UserProfileScreen
@@ -182,8 +183,15 @@ fun BiliNavHost() {
                         },
                         onOpenLogin = {
                             nav.navigate(Routes.LOGIN) { launchSingleTop = true }
+                        },
+                        onOpenAbout = {
+                            nav.navigate(Routes.ABOUT) { launchSingleTop = true }
                         }
                     )
+                }
+
+                composable(Routes.ABOUT) {
+                    AboutScreen(onBack = { nav.popBackStack() })
                 }
 
                 composable(Routes.BLACKLIST) {

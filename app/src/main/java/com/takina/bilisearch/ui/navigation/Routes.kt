@@ -22,6 +22,7 @@ object Routes {
     const val EDIT_PROFILE = "edit_profile"
     const val SETTINGS = "settings"
     const val BLACKLIST = "blacklist"
+    const val ABOUT = "about"
 
     const val LIST = "list?kind={kind}&folderId={folderId}&title={title}&mid={mid}"
     const val USER = "user/{mid}"

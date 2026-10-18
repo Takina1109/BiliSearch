@@ -19,7 +19,7 @@
 - 搜索到的用户可在 App 内查看个人主页（资料、签名、投稿、公开收藏、合集，关注/粉丝在头像下方）
 - 用户主页点头像放大查看，长按可选择保存到本地相册
 - 合集：调用 `seasons_series_list` / `seasons_archives_list` 拉取合集列表与合集内视频
-- 设置页：黑名单管理（支持解除拉黑）、退出登录、下载错误日志 / 清空日志（导出到 `下载/BiliSearch/`）
+- 设置页：黑名单管理（支持解除拉黑）、退出登录、下载错误日志 / 清空日志（导出到 `下载/BiliSearch/`）、关于（版本号 / 仓库链接 / 致谢）
 - 观看记录、我的投稿、我的收藏（含收藏夹内视频）、稍后再看、关注、粉丝、我的追番 / TA 的追番
 - 主题：跟随系统 / 白天 / 夜间，可在搜索界面右上角切换
 - 用户主页右上角菜单：分享主页、加入 / 移出黑名单
@@ -108,6 +108,25 @@ gradlew.bat assembleDebug
 set JAVA_HOME=C:\Program Files\Android\Android Studio\jbr
 gradlew.bat assembleDebug
 ```
+
+### 正式签名（可选）
+
+默认使用 debug 签名，clone 下来可开箱即用。如果要正式分发：
+
+```
+keytool -genkeypair -v -keystore bilisearch-release.jks -alias bilisearch ^
+  -keyalg RSA -keysize 2048 -validity 10000
+```
+
+然后在仓库根目录把 `keystore.properties.example` 复制为 `keystore.properties` 并填入信息：
+
+```
+gradlew.bat assembleRelease
+```
+
+`keystore.properties` 与 `*.jks` 已在 `.gitignore` 中，不会上传。
+
+> ⚠️ keystore 一旦丢失，后续版本就无法覆盖安装，请务必备份。
 
 ## 已知限制
 
