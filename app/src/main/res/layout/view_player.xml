@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  PlayerView 默认用 SurfaceView 渲染，SurfaceView 的画面由系统单独合成，
+  Compose 的 graphicsLayer（缩放/镜像）对它不生效 —— 这就是「镜像翻转」点了没反应的原因。
+  改成 texture_view 后画面走普通 View 绘制链路，镜像才有效。
+-->
+<androidx.media3.ui.PlayerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:resize_mode="fit"
+    app:shutter_background_color="@android:color/black"
+    app:surface_type="texture_view"
+    app:use_controller="false" />
