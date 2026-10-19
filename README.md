@@ -81,25 +81,6 @@ set JAVA_HOME=C:\Program Files\Android\Android Studio\jbr
 gradlew.bat assembleDebug
 ```
 
-### 正式签名（可选）
-
-默认使用 debug 签名，clone 下来可开箱即用。如果要正式分发：
-
-```
-keytool -genkeypair -v -keystore bilisearch-release.jks -alias bilisearch ^
-  -keyalg RSA -keysize 2048 -validity 10000
-```
-
-然后在仓库根目录把 `keystore.properties.example` 复制为 `keystore.properties` 并填入信息：
-
-```
-gradlew.bat assembleRelease
-```
-
-`keystore.properties` 与 `*.jks` 已在 `.gitignore` 中，不会上传。
-
-> ⚠️ keystore 一旦丢失，后续版本就无法覆盖安装，请务必备份。
-
 ## 安全提示
 
 - 登录态 Cookie 只保存在应用私有目录，**不上传、不外发**，仅用于请求 B 站接口。
